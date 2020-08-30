@@ -1,0 +1,12 @@
+[package]
+name = "witt3rd/tdd"
+version = "0.1.0"
+authors = []
+
+[dependencies]
+
+[[targets.bin]]
+path = "src"
+name = "tdd"
+main = "Main"
+

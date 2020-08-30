@@ -1,0 +1,4 @@
+[[packages]]
+id = 'witt3rd/tdd@dir+/Users/donald/src/witt3rd/public/idris/tdd'
+version = '0.1.0'
+dependencies = []

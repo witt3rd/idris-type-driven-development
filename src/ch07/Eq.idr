@@ -14,3 +14,17 @@ occurrences item (x :: xs)  = case item == x of
 
 testMatter : Nat
 testMatter = occurrences Gas [Solid, Gas, Liquid, Gas, Solid, Gas, Gas]
+
+data Tree elem = Empty
+               | Node (Tree elem) elem (Tree elem)
+
+Eq elem => Eq (Tree elem) where
+  (==) Empty        Empty           = True
+  (==) (Node x y z) (Node x' y' z') = (x == x') && (y == y') && (z == z') 
+  (==) _            _               = False
+
+testTree : Bool
+testTree = 
+  let x = Node Empty 1 Empty
+      y = Node Empty 1 Empty in
+  x == y
