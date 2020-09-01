@@ -15,6 +15,9 @@ Ord Album where
         EQ => compare year year'
         diff_title => diff_title
       diff_artist => diff_artist
+
+Show Album where
+  show (MkAlbum artist title year) = "\"" ++ title ++ "\" by " ++ artist ++ " (" ++ show year ++ ")"
   
 help : Album
 help = MkAlbum "The Beatles" "Help" 1965
@@ -33,3 +36,6 @@ heroes = MkAlbum "David Bowie" "Heroes" 1977
 
 collection : List Album
 collection = [help, rubbersoul, clouds, hunkydory, heroes]
+
+test : List String
+test = map show (sort collection)
