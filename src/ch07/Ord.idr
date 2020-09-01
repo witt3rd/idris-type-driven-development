@@ -1,8 +1,8 @@
 record Album where
   constructor MkAlbum
-  artist : String
-  title : String
-  year : Integer
+  artist  : String
+  title   : String
+  year    : Integer
 
 Eq Album where
   (==) (MkAlbum artist title year) (MkAlbum artist' title' year') =

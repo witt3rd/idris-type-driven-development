@@ -6,12 +6,12 @@ data Expr num = Val num
               | Abs (Expr num)
 
 eval : (Neg num, Integral num, Abs num) => Expr num -> num
-eval (Val x) = x
-eval (Add x y) = eval x + eval y
-eval (Sub x y) = eval x - eval y
-eval (Mul x y) = eval x * eval y
-eval (Div x y) = eval x `div` eval y
-eval (Abs x) = abs (eval x)
+eval (Val x)    = x
+eval (Add x y)  = eval x + eval y
+eval (Sub x y)  = eval x - eval y
+eval (Mul x y)  = eval x * eval y
+eval (Div x y)  = eval x `div` eval y
+eval (Abs x)    = abs (eval x)
 
 Num ty => Num (Expr ty) where
   (+) = Add
@@ -29,16 +29,25 @@ Num ty => Abs (Expr ty) where
   (==) x y = eval x == eval y
 
 Show ty => Show (Expr ty) where
-  show (Val x) = show x
-  show (Add x y) = "(" ++ show x ++ " + " ++ show y ++ ")"
-  show (Sub x y) = "(" ++ show x ++ " - " ++ show y ++ ")"
-  show (Mul x y) = "(" ++ show x ++ " * " ++ show y ++ ")"
-  show (Div x y) = "(" ++ show x ++ " / " ++ show y ++ ")"
-  show (Abs x) = "abs " ++ show x
+  show (Val x)    = show x
+  show (Add x y)  = "(" ++ show x ++ " + " ++ show y ++ ")"
+  show (Sub x y)  = "(" ++ show x ++ " - " ++ show y ++ ")"
+  show (Mul x y)  = "(" ++ show x ++ " * " ++ show y ++ ")"
+  show (Div x y)  = "(" ++ show x ++ " / " ++ show y ++ ")"
+  show (Abs x)    = "abs " ++ show x
 
 (Neg num, Integral num, Abs num) => Cast (Expr num) num where
   cast x = eval x
 
+Functor Expr where
+  map f (Val x)   = Val (f x)
+  map f (Add x y) = Add (map f x) (map f y)
+  map f (Sub x y) = Sub (map f x) (map f y)
+  map f (Mul x y) = Mul (map f x) (map f y)
+  map f (Div x y) = Div (map f x) (map f y)
+  map f (Abs x)   = Abs (map f x)
+
 testCast : Integer
 testCast = let x : Expr Integer = 6 * 3 + 12 in
   the Integer (cast x)
+
