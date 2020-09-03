@@ -1,7 +1,7 @@
 module Main
 
 import System
-import ReadNum
+import ch05.ReadNum
 
 guess : (target : Nat) -> (guesses : Nat) -> IO ()
 guess target guesses =

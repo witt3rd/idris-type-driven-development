@@ -1,6 +1,6 @@
 module Main
 
-import Data.Strings
+-- import Data.Strings
 
 longer : String -> String -> Nat
 longer x y = max (length x) (length y)

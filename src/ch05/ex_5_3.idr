@@ -1,7 +1,7 @@
 module Main
 
 import Data.Vect
-import System.File
+-- import System.File
 
 readToBlank : IO (List String)
 readToBlank = do x <- getLine
