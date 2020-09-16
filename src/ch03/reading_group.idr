@@ -18,9 +18,9 @@ diagDiff xs = diagHelper xs 0 0 0
 
 testSquare1 : Vect 3 (Vect 3 Int)
 testSquare1 = [
-  [1,2,3],
-  [4,5,6],
-  [9,8,9]
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
 ]
 
 testSquare2 : Vect 3 (Vect 3 Int)
